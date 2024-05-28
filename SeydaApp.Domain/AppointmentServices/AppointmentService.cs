@@ -1,4 +1,5 @@
-﻿using SeydaApp.Domain.Models;
+﻿using SeydaApp.Domain.Doctor1;
+using SeydaApp.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace SeydaApp.Domain.AppointmentServices
 
         public static List<Patient> patients = new List<Patient>();
 
+
+        public static List<Doctor> doctors = new List<Doctor>();
         
         public Patient AddPatient(string identycard, string patientname, string phonenumber)
         { 
@@ -27,6 +30,22 @@ namespace SeydaApp.Domain.AppointmentServices
 
             return patient;
 
+        }
+
+        public Doctor AddDoctor(Guid id, string doctorName, string hospitallocation, string expertise)
+        {
+            Doctor doctor = new Doctor
+            {
+                Id = Guid.NewGuid(),
+                DoctorName = doctorName,
+                HospitalLocation = hospitallocation,
+                Expertise = expertise
+
+            };
+
+            doctors.Add(doctor);
+
+            return doctor;
         }
     }
         
